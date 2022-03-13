@@ -4,29 +4,43 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="script.js" defer></script>
         <link rel="stylesheet" href="/styles/style.css" />
-        <title>ETCH-A-SKETCH</title>
+        <title>Etch-A-Sketch</title>
     </head>
     <body>
-        <div class="top-control"></div>
-        <div id="container" class="container">
-            <div id="main" class="main">
-                <header id="header" class="header-title">
-                    <span class="side-title">Magic</span>
-                    <h1 class="title">Etch A Sketch</h1>
-                    <span class="side-title">Screen</span>
-                </header>
-                <div class="sketch-screen">
-                    <div class="grid"></div>
-                </div>
-                <div class="controls">
-                    <button class="btn btn-left"></button>
+        <div class="container">
+            <div class="main">
+                <div class="sketch-box">
+                    <header class="header-title" id="header">
+                        <h2 class="side-title">Magic</h2>
+                        <h1 class="title">Etch A Sketch</h1>
+                        <h2 class="side-title">Screen</h2>
+                    </header>
 
-                    <!-- More Controls -->
-                    <button class="btn btn-right"></button>
+                    <div class="sketch-board">
+                        <div class="board">
+                            <div class="grid"></div>
+                        </div>
+                    </div>
+
+                    <div class="main-controls controls">
+                        <button class="btn btn-side btn-left">Reset</button>
+                        <div class="slider-container">
+                            <p class="slider-output">Grid: <span class="output"></span></p>
+                            <input class="grid-slider" id="slider" type="range" min="1" max="100" value="40" />
+                        </div>
+                        <button class="btn btn-side btn-right">Screenshot</button>
+                    </div>
                 </div>
             </div>
+
+            <footer class="footer" id="footer">
+                <a href="#">GitHub link</a>
+                <a href="#">LinkedIn link</a>
+                <a href="#">Twitter link</a>
+                <p>Copyright &copy; heemo521 2022</p>
+            </footer>
         </div>
-        <footer id="footer" class="footer">Copyright &copy; heemo521 2022</footer>
     </body>
 </html>
