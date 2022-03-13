@@ -1,5 +1,20 @@
 const MAIN_COLOR = `rgb(222, 226, 230)`;
+const DARK_COLOR = `rgb(33, 37, 41)`;
+
+//IS RANDOM_COLOR ENABLED
 let isRandomColor = false;
+
+//Set to color black only TEN-PERCENT of the time;
+function setColorBlack() {
+    const TEN_PERCENT = 10;
+    const randomNumber = Math.floor(Math.random() * 101);
+
+    //returns true 10 percent of the time when random number is less than or equal to 10
+    return randomNumber <= TEN_PERCENT;
+}
+
+let count = 0;
+let totalCount = 0;
 
 //SELECTORS
 const slider = document.querySelector('.grid-slider');
@@ -8,18 +23,23 @@ const grid = document.querySelector('.grid');
 const clearBtn = document.querySelector('.btn-clear');
 const randomBtn = document.querySelector('.btn-randomRGB');
 
-//CHANGE COLOR
+//CHANGE COLOR / DRAW
 const changeColor = function (e) {
     let backgroundColor = e.target.style.backgroundColor;
-    if (backgroundColor === MAIN_COLOR) {
-        if (isRandomColor === false) {
-            e.target.style.backgroundColor = '#212529';
+    const isBlack = backgroundColor === DARK_COLOR;
+
+    if (isRandomColor) {
+        //Select black 10% of the time
+        if (setColorBlack()) {
+            e.target.style.backgroundColor = DARK_COLOR;
         } else {
             let r = Math.round(Math.random() * (255 - 1) + 1);
             let g = Math.round(Math.random() * (255 - 1) + 1);
             let b = Math.round(Math.random() * (255 - 1) + 1);
             e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
         }
+    } else {
+        e.target.style.backgroundColor = DARK_COLOR;
     }
 };
 
@@ -69,11 +89,13 @@ const clearGrid = function () {
 };
 
 clearBtn.addEventListener('click', clearGrid);
-// clearBtn.addEventListener('click', () => {
-//     console.log('clear');
-// });
 
 //RANDOM RGB
 randomBtn.addEventListener('click', () => {
     isRandomColor = !isRandomColor;
+    if (isRandomColor) {
+        randomBtn.textContent = 'Back in Black!';
+    } else {
+        randomBtn.textContent = 'Random Color';
+    }
 });
