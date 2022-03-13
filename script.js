@@ -1,10 +1,7 @@
 //SLIDER-OUTPUT
 const slider = document.querySelector('.grid-slider');
 const sliderOutput = document.querySelector('.output');
-// sliderOutput.innerHTML = `${slider.value} x ${slider.value}`;
 
-//DYNAMIC GRID BASED ON THE INPUT VALUE
-//create divs using css-grid
 //GRID SELECTOR
 const grid = document.querySelector('.grid');
 
@@ -12,20 +9,20 @@ const showGridVal = function (val) {
     sliderOutput.innerHTML = `${val} x ${val}`;
 };
 
-//FUNCTION TO CHANGE GRID
 const changeGrid = function (val) {
     createGridDiv(val);
-    grid.style.gridTemplateColumns = `repeat(${val}, '1fr')`;
-    grid.style.gridTemplateRows = `repeat(${val}, '1fr')`;
+    console.log('1fr '.repeat(val).trimEnd());
+    grid.style.gridTemplateColumns = '1fr '.repeat(val).trimEnd();
+    grid.style.gridTemplateRows = '1fr '.repeat(val).trimEnd();
 };
 
 const createGridDiv = function (val) {
     //MUST CLEAR GRID BEFORE CREATING NEW GRID
     grid.innerHTML = '';
-    for (let i = 1; i <= val; i++) {
+    for (let i = 1; i <= val ** 2; i++) {
         let pixel = document.createElement('div');
         pixel.classList.add('pixel');
-        // gridDiv.push(pixel);
+        // pixel.textContent = '0';
         grid.appendChild(pixel);
     }
     console.log(grid.children.length);
